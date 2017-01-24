@@ -1,0 +1,2 @@
+# LemonDroid
+LemonKit几乎改变了Android开发的方法，但是如果你只想让你的原生Android开发更便捷，你不妨试试这个框架哦！

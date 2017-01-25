@@ -62,4 +62,9 @@ public class LKView extends View implements LKUI {
     public LKUIAttrsModel getLKUIAttrs() {
         return this.attrsModel;
     }
+
+    @Override
+    public View getView() {
+        return this;
+    }
 }

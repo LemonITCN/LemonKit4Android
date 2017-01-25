@@ -16,7 +16,7 @@
         android:layout_height="100dp"
         android:background="#ff0000"
         lk:borderColor="#0000ff"
-        lk:borderWidth="2dp"
+        lk:borderWidth="8dp"
         lk:clipToBounds="true"
         lk:cornerRadius="8dp" />
 </RelativeLayout>

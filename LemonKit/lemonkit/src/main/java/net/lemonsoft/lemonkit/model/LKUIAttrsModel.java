@@ -1,7 +1,5 @@
 package net.lemonsoft.lemonkit.model;
 
-import android.graphics.Canvas;
-import android.graphics.Color;
 import android.support.annotation.NonNull;
 
 import net.lemonsoft.lemonkit.core.LKUIAttrsCore;
@@ -15,66 +13,57 @@ import net.lemonsoft.lemonkit.interfaces.ui.LKUI;
 
 public class LKUIAttrsModel {
 
-    /**
-     * 圆角半径
-     */
-    private int cornerRadius = 0;
-    /**
-     * 边框宽度
-     */
-    private int borderWidth = 0;
-    /**
-     * 边框颜色
-     */
-    private int borderColor = Color.WHITE;
-    /**
-     * 是否沿着边框剪切，若为真，那么超过边框的部分都会被剪切，无法看见
-     */
-    private boolean clipToBounds = true;
+    private NativeViewExtensionAttrsModel attrsModel;
 
     private LKUI lkui;
 
     public LKUIAttrsModel(@NonNull LKUI lkui) {
         this.lkui = lkui;
+        this.attrsModel = new NativeViewExtensionAttrsModel();
+    }
+
+    public NativeViewExtensionAttrsModel getAttrsModel() {
+        return attrsModel;
     }
 
     public int getCornerRadius() {
-        return cornerRadius;
+        return this.attrsModel.getCornerRadius();
     }
 
     public void setCornerRadius(int cornerRadius) {
-        this.cornerRadius = cornerRadius;
+        this.attrsModel.setCornerRadius(cornerRadius);
         // 重新应用扩展属性的样式
         LKUIAttrsCore.dealWithView(lkui, this);
     }
 
     public int getBorderWidth() {
-        return borderWidth;
+        return this.attrsModel.getBorderWidth();
     }
 
     public void setBorderWidth(int borderWidth) {
-        this.borderWidth = borderWidth;
+        this.attrsModel.setBorderWidth(borderWidth);
         // 重新应用扩展属性的样式
         LKUIAttrsCore.dealWithView(lkui, this);
     }
 
     public int getBorderColor() {
-        return borderColor;
+        return this.attrsModel.getBorderColor();
     }
 
     public void setBorderColor(int borderColor) {
-        this.borderColor = borderColor;
+        this.attrsModel.setBorderColor(borderColor);
         // 重新应用扩展属性的样式
         LKUIAttrsCore.dealWithView(lkui, this);
     }
 
     public boolean isClipToBounds() {
-        return clipToBounds;
+        return this.attrsModel.isClipToBounds();
     }
 
     public void setClipToBounds(boolean clipToBounds) {
-        this.clipToBounds = clipToBounds;
+        this.attrsModel.setClipToBounds(clipToBounds);
         // 重新应用扩展属性的样式
         LKUIAttrsCore.dealWithView(lkui, this);
     }
+
 }

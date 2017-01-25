@@ -33,7 +33,7 @@ public class LKUIAttrsModel {
     public void setCornerRadius(int cornerRadius) {
         this.attrsModel.setCornerRadius(cornerRadius);
         // 重新应用扩展属性的样式
-        LKUIAttrsCore.dealWithView(lkui, this);
+        LKUIAttrsCore.parse(lkui, this);
     }
 
     public int getBorderWidth() {
@@ -43,7 +43,7 @@ public class LKUIAttrsModel {
     public void setBorderWidth(int borderWidth) {
         this.attrsModel.setBorderWidth(borderWidth);
         // 重新应用扩展属性的样式
-        LKUIAttrsCore.dealWithView(lkui, this);
+        LKUIAttrsCore.parse(lkui, this);
     }
 
     public int getBorderColor() {
@@ -53,7 +53,7 @@ public class LKUIAttrsModel {
     public void setBorderColor(int borderColor) {
         this.attrsModel.setBorderColor(borderColor);
         // 重新应用扩展属性的样式
-        LKUIAttrsCore.dealWithView(lkui, this);
+        LKUIAttrsCore.parse(lkui, this);
     }
 
     public boolean isClipToBounds() {
@@ -63,7 +63,7 @@ public class LKUIAttrsModel {
     public void setClipToBounds(boolean clipToBounds) {
         this.attrsModel.setClipToBounds(clipToBounds);
         // 重新应用扩展属性的样式
-        LKUIAttrsCore.dealWithView(lkui, this);
+        LKUIAttrsCore.parse(lkui, this);
     }
 
 }

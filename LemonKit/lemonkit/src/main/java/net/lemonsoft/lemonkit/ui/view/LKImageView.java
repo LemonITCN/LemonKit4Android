@@ -10,37 +10,38 @@ import android.graphics.Region;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.ImageView;
 
 import net.lemonsoft.lemonkit.core.LKUIAttrsCore;
 import net.lemonsoft.lemonkit.interfaces.ui.LKUI;
 import net.lemonsoft.lemonkit.model.LKUIAttrsModel;
 
 /**
- * LKView,对系统的基本View进行扩展
+ * LKImageView,对系统的基本ImageView进行扩展
  * Created by LiuRi on 2017/1/25.
  */
 
-public class LKView extends View implements LKUI {
+public class LKImageView extends ImageView implements LKUI {
 
     private Canvas canvas;
     private LKUIAttrsModel attrsModel;
 
-    public LKView(Context context) {
+    public LKImageView(Context context) {
         super(context);
     }
 
-    public LKView(Context context, AttributeSet attrs) {
+    public LKImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
         LKUIAttrsCore.parse(this, attrs);
     }
 
-    public LKView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public LKImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         LKUIAttrsCore.parse(this, attrs);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public LKView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public LKImageView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         LKUIAttrsCore.parse(this, attrs);
     }

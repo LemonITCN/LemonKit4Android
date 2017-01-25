@@ -22,7 +22,6 @@ public final class ViewTool {
 
     public static void applyExtensionAttrs(View view, Canvas canvas, NativeViewExtensionAttrsModel attrs) {
         int backColor = Color.argb(0, 255, 255, 255);// 不直接用Color.TRANSPARENT是因为其颜色值是0,0,0,0，后期动画可能会出现问题
-        System.out.println(view.getBackground().getClass());
         if (view.getBackground() instanceof ColorDrawable)
             backColor = ((ColorDrawable) view.getBackground()).getColor();
         // 根据属性创建并渲染背景对象
@@ -37,17 +36,6 @@ public final class ViewTool {
         else
             view.setBackgroundDrawable(backDrawable);
 
-        if (attrs.isClipToBounds() && canvas != null) {
-            // 需要切割到边界部分
-            Path path = new Path();
-            path.addRoundRect(
-                    new RectF(0, 0, canvas.getWidth(), canvas.getHeight()),
-                    attrs.getCornerRadius(),
-                    attrs.getCornerRadius(),
-                    Path.Direction.CW
-            );
-            canvas.clipPath(path, Region.Op.REPLACE);
-        }
     }
 
 }

@@ -10,37 +10,38 @@ import android.graphics.Region;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.TextView;
 
 import net.lemonsoft.lemonkit.core.LKUIAttrsCore;
 import net.lemonsoft.lemonkit.interfaces.ui.LKUI;
 import net.lemonsoft.lemonkit.model.LKUIAttrsModel;
 
 /**
- * LKView,对系统的基本View进行扩展
+ * LKTextView,对系统的基本TextView进行扩展
  * Created by LiuRi on 2017/1/25.
  */
 
-public class LKView extends View implements LKUI {
+public class LKTextView extends TextView implements LKUI {
 
     private Canvas canvas;
     private LKUIAttrsModel attrsModel;
 
-    public LKView(Context context) {
+    public LKTextView(Context context) {
         super(context);
     }
 
-    public LKView(Context context, AttributeSet attrs) {
+    public LKTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
         LKUIAttrsCore.parse(this, attrs);
     }
 
-    public LKView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public LKTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         LKUIAttrsCore.parse(this, attrs);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public LKView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public LKTextView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         LKUIAttrsCore.parse(this, attrs);
     }
@@ -65,6 +66,7 @@ public class LKView extends View implements LKUI {
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(attrsModel.getBorderWidth());
         paint.setColor(attrsModel.getBorderColor());
+        paint.setAntiAlias(true);
         canvas.drawRoundRect(
                 rectF,
                 attrsModel.getCornerRadius(),
@@ -81,7 +83,7 @@ public class LKView extends View implements LKUI {
     @Override
     public void setLKUIAttrs(LKUIAttrsModel attrs) {
         this.attrsModel = attrs;
-        LKUIAttrsCore.parse(this, attrs);
+//        LKUIAttrsCore.parse(this, attrs);
     }
 
     @Override

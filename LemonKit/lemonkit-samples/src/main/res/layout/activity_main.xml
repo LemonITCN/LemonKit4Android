@@ -20,6 +20,7 @@
         lk:borderWidth="3dp" />
 
     <ui.LKView
+        android:id="@+id/myView"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="#ff0000"

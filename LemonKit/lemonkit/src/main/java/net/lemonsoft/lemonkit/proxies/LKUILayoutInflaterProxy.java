@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 
 import org.xmlpull.v1.XmlPullParser;
 
+import java.lang.reflect.Field;
+
 /**
  * Created by lemonsoft on 2017/1/26.
  */
@@ -22,6 +24,18 @@ public class LKUILayoutInflaterProxy extends LayoutInflater {
     public LKUILayoutInflaterProxy(LayoutInflater original, Context newContext) {
         super(original, newContext);
         this.inflater = original;
+        try {
+            Field field = this.inflater.getClass().getDeclaredField("sClassPrefixList");
+            field.setAccessible(true);
+            field.set(this.inflater, new String[]{
+                    "ui.LK",
+                    "android.widget.",
+                    "android.webkit.",
+                    "android.app."
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -31,9 +45,10 @@ public class LKUILayoutInflaterProxy extends LayoutInflater {
 
     @Override
     public View inflate(int resource, ViewGroup root) {
-        System.out.println("========" + root);
         View view = inflater.inflate(resource, root);
-        System.out.println(" ==OK=====  INFLATE RESOURCE ROOT" + resource + " - - - " + view);
+        if (view instanceof ViewGroup) {
+            System.out.println("这个类是： " + view.getClass());
+        }
         return view;
     }
 

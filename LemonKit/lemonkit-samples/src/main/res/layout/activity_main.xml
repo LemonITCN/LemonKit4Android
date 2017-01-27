@@ -17,12 +17,13 @@
         android:layout_height="100dp"
         android:text="LemonKit"
         lk:borderColor="#ccaadd"
-        lk:borderWidth="3dp" />
+        lk:borderWidth="10dp" />
 
     <ui.LKView
         android:id="@+id/myView"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_marginTop="10dp"
         android:background="#ff0000"
         lk:borderColor="#0000ff"
         lk:borderWidth="8dp"

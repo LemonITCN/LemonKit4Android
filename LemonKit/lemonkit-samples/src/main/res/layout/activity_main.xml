@@ -19,7 +19,7 @@
         lk:borderColor="#ccaadd"
         lk:borderWidth="10dp" />
 
-    <ui.LKView
+    <View
         android:id="@+id/myView"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -30,7 +30,7 @@
         lk:clipToBounds="true"
         lk:cornerRadius="8dp" />
 
-    <ui.LKTextView
+    <TextView
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"

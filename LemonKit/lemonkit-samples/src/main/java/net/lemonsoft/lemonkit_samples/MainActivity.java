@@ -4,8 +4,12 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 
 
+import net.lemonsoft.lemonkit.proxies.LKUILayoutInflaterProxy;
+
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -45,7 +49,31 @@ public class MainActivity extends Activity {
 //        Proxy.newProxyInstance(LayoutInflater.class.getClassLoader(),
 //                getLayoutInflater().getClass().getInterfaces(),
 //                new MyInflater(getLayoutInflater()));
-        setContentView(R.layout.activity_main);
+
+//        this.getClass().getDeclaredField()
+
+
+        try {
+            Window windowObj = getWindow();
+            Field layoutInflaterField = windowObj.getClass().getDeclaredField("mLayoutInflater");
+            layoutInflaterField.setAccessible(true);
+            LayoutInflater inflaterObj = (LayoutInflater) layoutInflaterField.get(windowObj);
+            LKUILayoutInflaterProxy layoutInflaterProxy = new LKUILayoutInflaterProxy(inflaterObj, this);
+            layoutInflaterField.set(windowObj, layoutInflaterProxy);
+            System.out.println(windowObj);
+            System.out.println(inflaterObj);
+
+
+            setContentView(R.layout.activity_main);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+//        getLayoutInflater()
+//
+//        for (Field field : getClass().getFields()) {
+//            System.out.println(field.getName() + field);
+//        }
 
         this.text = (ProxyInterface) Proxy.newProxyInstance(ProxyText.class.getClassLoader(),
                 new Class[]{ProxyInterface.class},

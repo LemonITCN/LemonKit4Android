@@ -15,29 +15,11 @@
     <TextView
         android:layout_width="300dp"
         android:layout_height="100dp"
-        android:text="LemonKit"
-        lk:borderColor="#ccaadd"
-        lk:borderWidth="10dp" />
+        android:background="#ccddff"
+        android:text="LemonKit-TextView"
+        lk:borderColor="#ff0000"
+        lk:borderWidth="10dp"
+        lk:cornerRadius="48dp" />
 
-    <View
-        android:id="@+id/myView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="10dp"
-        android:background="#ff0000"
-        lk:borderColor="#0000ff"
-        lk:borderWidth="8dp"
-        lk:clipToBounds="true"
-        lk:cornerRadius="20dp" />
-
-    <TextView
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:text="hello"
-        lk:borderColor="#dd44aa"
-        lk:borderWidth="4dp"
-        lk:clipToBounds="true"
-        lk:cornerRadius="20dp" />
 
 </LinearLayout>

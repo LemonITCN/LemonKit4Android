@@ -3,6 +3,7 @@ package net.lemonsoft.lemonkit.ui.view;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.widget.TextView;
@@ -12,6 +13,9 @@ import net.lemonsoft.lemonkit.enums.LKUIDelegateOnDrawState;
 import net.lemonsoft.lemonkit.interfaces.ui.LKUIDelegate;
 import net.lemonsoft.lemonkit.interfaces.ui.LKUIView;
 import net.lemonsoft.lemonkit.model.LKUIExtensionModel;
+import net.lemonsoft.lemonkit.tools.LKDrawableTool;
+
+import java.lang.reflect.Field;
 
 /**
  * LKTextView,对系统的基本TextView进行扩展
@@ -55,6 +59,13 @@ public class LKTextView extends TextView implements LKUIView {
     public void setLk(LKUIExtensionModel lk) {
         this.lk = lk;
         lk.setView(this);
+        if (lk.getCornerRadius() >= 0 && getBackground() != null) {
+            Drawable drawable = LKDrawableTool.createRoundCornerDrawable(getBackground(), lk.getCornerRadius());
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                setBackground(drawable);
+            else
+                setBackgroundDrawable(drawable);
+        }
     }
 
 }

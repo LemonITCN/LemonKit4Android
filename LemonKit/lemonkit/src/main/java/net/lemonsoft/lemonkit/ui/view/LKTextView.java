@@ -3,28 +3,24 @@ package net.lemonsoft.lemonkit.ui.view;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.RectF;
-import android.graphics.Region;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.TextView;
 
 import net.lemonsoft.lemonkit.core.LKUIAttrsCore;
-import net.lemonsoft.lemonkit.interfaces.ui.LKUI;
-import net.lemonsoft.lemonkit.model.LKUIAttrsModel;
+import net.lemonsoft.lemonkit.enums.LKUIDelegateOnDrawState;
+import net.lemonsoft.lemonkit.interfaces.ui.LKUIDelegate;
+import net.lemonsoft.lemonkit.interfaces.ui.LKUIView;
+import net.lemonsoft.lemonkit.model.LKUIExtensionModel;
 
 /**
  * LKTextView,对系统的基本TextView进行扩展
  * Created by LiuRi on 2017/1/25.
  */
 
-public class LKTextView extends TextView implements LKUI {
+public class LKTextView extends TextView implements LKUIView {
 
-    private Canvas canvas;
-    private LKUIAttrsModel attrsModel;
+    public LKUIExtensionModel lk;
 
     public LKTextView(Context context) {
         super(context);
@@ -48,51 +44,17 @@ public class LKTextView extends TextView implements LKUI {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        this.canvas = canvas;
-        RectF rectF = new RectF(0, 0, canvas.getWidth(), canvas.getHeight());
-        if (attrsModel.isClipToBounds()) {
-            // 需要切割到边界部分
-            Path path = new Path();
-            path.addRoundRect(
-                    rectF,
-                    attrsModel.getCornerRadius(),
-                    attrsModel.getCornerRadius(),
-                    Path.Direction.CW
-            );
-            canvas.clipPath(path, Region.Op.REPLACE);
-        }
+        if (lk != null)
+            lk.onDrawHandler(canvas, LKUIDelegateOnDrawState.PRE_SUPER_DRAW);
         super.onDraw(canvas);
-        Paint paint = new Paint();
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(attrsModel.getBorderWidth());
-        paint.setColor(attrsModel.getBorderColor());
-        paint.setAntiAlias(true);
-        canvas.drawRoundRect(
-                rectF,
-                attrsModel.getCornerRadius(),
-                attrsModel.getCornerRadius(),
-                paint
-        );
+        if (lk != null)
+            lk.onDrawHandler(canvas, LKUIDelegateOnDrawState.AFT_SUPER_DRAW);
     }
 
     @Override
-    public Canvas getCanvas() {
-        return canvas;
+    public void setLk(LKUIExtensionModel lk) {
+        this.lk = lk;
+        lk.setView(this);
     }
 
-    @Override
-    public void setLKUIAttrs(LKUIAttrsModel attrs) {
-        this.attrsModel = attrs;
-//        LKUIAttrsCore.parse(this, attrs);
-    }
-
-    @Override
-    public LKUIAttrsModel getLKUIAttrs() {
-        return this.attrsModel;
-    }
-
-    @Override
-    public View getView() {
-        return this;
-    }
 }

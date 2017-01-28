@@ -28,7 +28,7 @@
         lk:borderColor="#0000ff"
         lk:borderWidth="8dp"
         lk:clipToBounds="true"
-        lk:cornerRadius="8dp" />
+        lk:cornerRadius="20dp" />
 
     <TextView
         android:layout_width="200dp"

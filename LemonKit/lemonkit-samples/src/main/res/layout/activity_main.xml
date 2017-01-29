@@ -13,13 +13,13 @@
     tools:context="net.lemonsoft.lemonkit_samples.MainActivity">
 
     <TextView
-        android:layout_width="300dp"
+        android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="#ccddff"
+        android:background="@mipmap/ic_launcher"
         android:text="LemonKit-TextView"
         lk:borderColor="#ff0000"
         lk:borderWidth="10dp"
-        lk:cornerRadius="48dp" />
+        lk:cornerRadius="68dp" />
 
 
 </LinearLayout>

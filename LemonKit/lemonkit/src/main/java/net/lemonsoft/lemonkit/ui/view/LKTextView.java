@@ -59,13 +59,17 @@ public class LKTextView extends TextView implements LKUIView {
     public void setLk(LKUIExtensionModel lk) {
         this.lk = lk;
         lk.setView(this);
-        if (lk.getCornerRadius() >= 0 && getBackground() != null) {
-            Drawable drawable = LKDrawableTool.createRoundCornerDrawable(getBackground(), lk.getCornerRadius());
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                setBackground(drawable);
-            else
-                setBackgroundDrawable(drawable);
-        }
+        if (lk.getCornerRadius() >= 0 && getBackground() != null)
+            setBackground(
+                    LKDrawableTool.createRoundCornerDrawable(getBackground(), lk.getCornerRadius())
+            );
     }
 
+    @Override
+    public void setBackground(Drawable background) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+            super.setBackground(background);
+        else
+            super.setBackgroundDrawable(background);
+    }
 }

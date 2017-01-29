@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="View">
+        <!-- UI视图相关 -->
         <attr name="cornerRadius" format="dimension" />
         <attr name="borderWidth" format="dimension" />
         <attr name="borderColor" format="color" />

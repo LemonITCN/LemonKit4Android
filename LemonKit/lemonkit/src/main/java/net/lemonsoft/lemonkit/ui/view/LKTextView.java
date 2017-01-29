@@ -10,12 +10,9 @@ import android.widget.TextView;
 
 import net.lemonsoft.lemonkit.core.LKUIAttrsCore;
 import net.lemonsoft.lemonkit.enums.LKUIDelegateOnDrawState;
-import net.lemonsoft.lemonkit.interfaces.ui.LKUIDelegate;
 import net.lemonsoft.lemonkit.interfaces.ui.LKUIView;
 import net.lemonsoft.lemonkit.model.LKUIExtensionModel;
 import net.lemonsoft.lemonkit.tools.LKDrawableTool;
-
-import java.lang.reflect.Field;
 
 /**
  * LKTextView,对系统的基本TextView进行扩展

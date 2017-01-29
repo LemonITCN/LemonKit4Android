@@ -3,19 +3,16 @@ package net.lemonsoft.lemonkit.ui.view;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.RectF;
-import android.graphics.Region;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 
 import net.lemonsoft.lemonkit.core.LKUIAttrsCore;
 import net.lemonsoft.lemonkit.enums.LKUIDelegateOnDrawState;
-import net.lemonsoft.lemonkit.interfaces.ui.LKUIDelegate;
 import net.lemonsoft.lemonkit.interfaces.ui.LKUIView;
 import net.lemonsoft.lemonkit.model.LKUIExtensionModel;
+import net.lemonsoft.lemonkit.tools.LKDrawableTool;
 
 /**
  * LKView,对系统的基本View进行扩展
@@ -59,5 +56,17 @@ public class LKView extends View implements LKUIView {
     public void setLk(LKUIExtensionModel lk) {
         this.lk = lk;
         lk.setView(this);
+        if (lk.getCornerRadius() >= 0 && getBackground() != null)
+            setBackground(
+                    LKDrawableTool.createRoundCornerDrawable(getBackground(), lk.getCornerRadius())
+            );
+    }
+
+    @Override
+    public void setBackground(Drawable background) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+            super.setBackground(background);
+        else
+            super.setBackgroundDrawable(background);
     }
 }

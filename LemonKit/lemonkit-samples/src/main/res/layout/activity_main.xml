@@ -21,5 +21,13 @@
         lk:borderWidth="10dp"
         lk:cornerRadius="68dp" />
 
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:src="@mipmap/ic_launcher"
+        lk:borderColor="#000000"
+        lk:borderWidth="10dp"
+        lk:cornerRadius="50dp" />
 
 </LinearLayout>

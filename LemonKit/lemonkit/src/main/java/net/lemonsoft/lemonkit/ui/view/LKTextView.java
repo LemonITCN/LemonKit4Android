@@ -29,18 +29,18 @@ public class LKTextView extends TextView implements LKUIView {
 
     public LKTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
-//        LKUIAttrsCore.parse(this, attrs);
+        LKUIAttrsCore.parse(this, attrs);
     }
 
     public LKTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-//        LKUIAttrsCore.parse(this, attrs);
+        LKUIAttrsCore.parse(this, attrs);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public LKTextView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-//        LKUIAttrsCore.parse(this, attrs);
+        LKUIAttrsCore.parse(this, attrs);
     }
 
     @Override

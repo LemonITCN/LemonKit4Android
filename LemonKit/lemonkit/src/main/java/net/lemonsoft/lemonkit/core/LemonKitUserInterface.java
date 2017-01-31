@@ -30,8 +30,7 @@ public class LemonKitUserInterface {
             String[] oldPrefixList = (String[]) field.get(layoutInflater);
             String[] newPrefixList = new String[oldPrefixList.length + 1];
             newPrefixList[0] = "net.lemonsoft.lemonkit.ui.view.LK";
-            for (int i = 0; i < oldPrefixList.length; i++)
-                newPrefixList[i + 1] = oldPrefixList[i];
+            System.arraycopy(oldPrefixList, 0, newPrefixList, 1, oldPrefixList.length);
             field.set(layoutInflater, newPrefixList);
         } catch (Exception e) {
             e.printStackTrace();

@@ -7,6 +7,8 @@ package net.lemonsoft.lemonkit.model;
 
 public class LKTabBarItemModel {
 
-
+    public LKTabBarItemModel(String lk) {
+        System.out.println("LK OK");
+    }
 
 }

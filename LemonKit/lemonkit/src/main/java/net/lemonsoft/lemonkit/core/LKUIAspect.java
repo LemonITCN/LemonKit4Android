@@ -29,7 +29,7 @@ import java.util.Map;
 @Aspect
 public class LKUIAspect {
 
-    private Map<String, LKUIExtensionModel> lkPool = new HashMap<>();
+    private static Map<String, LKUIExtensionModel> lkPool = new HashMap<>();
 
     @After("execution(net.lemonsoft.lemonkit.ui.view.LKRelativeLayout.new(..))")
     public void lkConstructor(JoinPoint joinPoint) throws Throwable {
@@ -69,8 +69,9 @@ public class LKUIAspect {
 
     @After("execution(* net.lemonsoft.lemonkit.ui.view.LK*.finalize(..))")
     public void lkFinalize(JoinPoint joinPoint) throws Throwable {
-        if (lkPool.containsKey(joinPoint.getTarget().hashCode()))
-            lkPool.remove(joinPoint.getTarget().hashCode());
+        if (lkPool.containsKey(joinPoint.getTarget().hashCode() + ""))
+            lkPool.remove(joinPoint.getTarget().hashCode() + "");
+        System.out.println("remove from pool : " + hashCode());
     }
 
     private void applyLKComplete(LKUIExtensionModel lk, LKUIView lkui) {

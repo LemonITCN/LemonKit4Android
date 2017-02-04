@@ -14,6 +14,7 @@ import net.lemonsoft.lemonkit.interfaces.ui.LKUIView;
 import net.lemonsoft.lemonkit.model.LKUIExtensionModel;
 
 /**
+ * LemonKit UI RelativeLayout - 对系统的RelativeLayout进行强化、扩展
  * Created by lemonsoft on 2017/2/1.
  */
 

@@ -13,6 +13,7 @@ import net.lemonsoft.lemonkit.interfaces.ui.LKUIView;
 import net.lemonsoft.lemonkit.model.LKUIExtensionModel;
 
 /**
+ * LemonKit UI View - 对系统的View进行强化、扩展
  * Created by lemonsoft on 2017/2/1.
  */
 

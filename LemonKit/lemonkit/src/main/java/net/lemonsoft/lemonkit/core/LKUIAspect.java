@@ -39,13 +39,11 @@ public class LKUIAspect {
             model = LKUIAttrsCore.p((View) joinPoint.getTarget(), (AttributeSet) args[1]);
         lkPool.put(joinPoint.getTarget().hashCode() + "", model);
         applyLKComplete(model, (LKUIView) joinPoint.getTarget());
-        System.out.println(" add model :" + joinPoint.getTarget().hashCode());
     }
 
-    @Around("execution(* net.lemonsoft.lemonkit.ui.view.LK*.onDraw(..))")
+    @Around("execution(* net.lemonsoft.lemonkit.ui.view.LKRelativeLayout.onDraw(..))")
     public void lkOnDraw(ProceedingJoinPoint joinPoint) throws Throwable {
         boolean canRun = lkPool.containsKey(joinPoint.getTarget().hashCode() + "");
-        System.out.println("is can run ???" + canRun + " - size: " + lkPool.size() + " hashcode: " + joinPoint.getTarget().hashCode());
         if (canRun)
             lkPool.get(joinPoint.getTarget().hashCode() + "").onDrawHandler(
                     (Canvas) joinPoint.getArgs()[0],
@@ -59,7 +57,7 @@ public class LKUIAspect {
             );
     }
 
-    @Around("execution(* net.lemonsoft.lemonkit.ui.view.LK*.setBackground(..))")
+    @Around("execution(* net.lemonsoft.lemonkit.ui.view.LKRelativeLayout.setBackground(..))")
     public void lkSetBackground(ProceedingJoinPoint joinPoint) throws Throwable {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
             joinPoint.proceed();
@@ -67,11 +65,10 @@ public class LKUIAspect {
             ((View) joinPoint.getTarget()).setBackgroundDrawable(((Drawable) joinPoint.getArgs()[0]));
     }
 
-    @After("execution(* net.lemonsoft.lemonkit.ui.view.LK*.finalize(..))")
+    @After("execution(* net.lemonsoft.lemonkit.ui.view.LKRelativeLayout.finalize(..))")
     public void lkFinalize(JoinPoint joinPoint) throws Throwable {
         if (lkPool.containsKey(joinPoint.getTarget().hashCode() + ""))
             lkPool.remove(joinPoint.getTarget().hashCode() + "");
-        System.out.println("remove from pool : " + hashCode());
     }
 
     private void applyLKComplete(LKUIExtensionModel lk, LKUIView lkui) {

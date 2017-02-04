@@ -1,5 +1,6 @@
 package net.lemonsoft.lemonkit.interfaces.ui;
 
+import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 
 import net.lemonsoft.lemonkit.model.LKUIExtensionModel;
@@ -11,8 +12,8 @@ import net.lemonsoft.lemonkit.model.LKUIExtensionModel;
 
 public interface LKUIView {
 
-    void setLk(LKUIExtensionModel lkuiExtensionModel);
-
     void setBackground(Drawable drawable);
+
+    LKUIExtensionModel getLk();
 
 }

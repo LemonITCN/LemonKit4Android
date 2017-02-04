@@ -3,13 +3,8 @@ package net.lemonsoft.lemonkit.core;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.widget.RelativeLayout;
 
-import net.lemonsoft.lemonkit.ui.view.LKView;
-
-import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 
 /**
  * LemonKit UI 核心类

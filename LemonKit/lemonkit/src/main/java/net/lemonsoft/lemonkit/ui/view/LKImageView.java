@@ -6,33 +6,31 @@ import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 import net.lemonsoft.lemonkit.interfaces.ui.LKUIView;
 import net.lemonsoft.lemonkit.model.LKUIExtensionModel;
 
 /**
- * Created by lemonsoft on 2017/2/1.
+ * Created by lemonsoft on 2017/2/4.
  */
 
-public class LKRelativeLayout extends RelativeLayout implements LKUIView {
+public class LKImageView extends ImageView implements LKUIView {
 
-    public LKRelativeLayout(Context context) {
+    public LKImageView(Context context) {
         super(context);
     }
 
-    public LKRelativeLayout(Context context, AttributeSet attrs) {
+    public LKImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public LKRelativeLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public LKImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public LKRelativeLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public LKImageView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 

@@ -41,7 +41,7 @@ public class LKUIExtensionModel {
     /**
      * 边框颜色
      */
-    private int borderColor = Color.WHITE;
+    private int borderColor = Color.argb(0, 255, 255, 255);
     /**
      * 是否沿着边框剪切，若为真，那么超过边框的部分都会被剪切，无法看见
      */

@@ -12,6 +12,10 @@ import net.lemonsoft.lemonkit.model.LKUIExtensionModel;
 
 public interface LKUIView {
 
+//    void onDraw(Canvas canvas);
+
+//    void finalize();
+
     void setBackground(Drawable drawable);
 
     LKUIExtensionModel getLk();

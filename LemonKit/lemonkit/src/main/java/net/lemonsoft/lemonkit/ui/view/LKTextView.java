@@ -7,32 +7,33 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import net.lemonsoft.lemonkit.interfaces.ui.LKUIView;
 import net.lemonsoft.lemonkit.model.LKUIExtensionModel;
+
+import org.w3c.dom.Text;
 
 /**
  * Created by lemonsoft on 2017/2/1.
  */
 
-public class LKRelativeLayout extends RelativeLayout implements LKUIView {
+public class LKTextView extends TextView implements LKUIView {
 
-    public LKRelativeLayout(Context context) {
+    public LKTextView(Context context) {
         super(context);
     }
 
-    public LKRelativeLayout(Context context, AttributeSet attrs) {
+    public LKTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public LKRelativeLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public LKTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public LKRelativeLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public LKTextView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 

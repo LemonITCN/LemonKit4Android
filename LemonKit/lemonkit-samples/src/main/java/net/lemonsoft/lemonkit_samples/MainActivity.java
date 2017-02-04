@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import net.lemonsoft.lemonkit.model.LKTabBarItemModel;
-
 public class MainActivity extends Activity {
 
     static boolean is = false;
@@ -18,7 +16,6 @@ public class MainActivity extends Activity {
         if (!is) {
             startActivity(new Intent().setClass(MainActivity.this, MainActivity.class));
             is = true;
-            new LKTabBarItemModel("liuri");
         }
     }
 

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.view.View;
 
 import net.lemonsoft.lemonkit.annotations.FindView;
+import net.lemonsoft.lemonkit.annotations.SetContentView;
 import net.lemonsoft.lemonkit.tools.LKResourceTool;
 
 import java.lang.reflect.Field;
@@ -29,6 +30,11 @@ public class LKUIAnnotationParser {
      */
     public static void parse(Activity activity, boolean ignoreNoFindViewField) {
         try {
+            // 解析类注解：SetContentView
+            SetContentView setContentView = activity.getClass().getAnnotation(SetContentView.class);
+            if (setContentView != null && setContentView.value() > 0)
+                // 可以读到SetContentView的layout的id值
+                activity.setContentView(setContentView.value());
             // 解析属性注解：FindView
             Field[] fields = activity.getClass().getDeclaredFields();
             for (Field fieldItem : fields) {

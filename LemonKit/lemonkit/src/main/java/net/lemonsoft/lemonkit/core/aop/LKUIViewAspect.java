@@ -62,10 +62,19 @@ public class LKUIViewAspect {
 
     @Around("execution(* net.lemonsoft.lemonkit.ui.view.LK*.setBackground(..))")
     public void lkSetBackground(ProceedingJoinPoint joinPoint) throws Throwable {
+        // 下面的代码针对圆角矩形背景进行了适配和修改
+        Drawable[] args = null;
+        if (containLKWithJoinPoint(joinPoint))
+            args = new Drawable[]{// 创建圆角矩形drawable参数
+                    LKDrawableTool.createRoundCornerDrawable(
+                            (Drawable) joinPoint.getArgs()[0],
+                            lkPool.get(getLKKey(joinPoint)).getCornerRadius()
+                    )
+            };
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            joinPoint.proceed();
+            joinPoint.proceed(args == null ? joinPoint.getArgs() : args);
         else
-            ((View) joinPoint.getTarget()).setBackgroundDrawable(((Drawable) joinPoint.getArgs()[0]));
+            ((View) joinPoint.getTarget()).setBackgroundDrawable(args == null ? ((Drawable) joinPoint.getArgs()[0]) : args[0]);
     }
 
     @Before("execution(* net.lemonsoft.lemonkit.ui.view.LK*.finalize(..))")

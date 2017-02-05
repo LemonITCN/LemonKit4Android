@@ -1,10 +1,10 @@
 package net.lemonsoft.lemonkit_samples;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import net.lemonsoft.lemonkit.annotations.FindView;
 import net.lemonsoft.lemonkit.annotations.SetContentView;
 import net.lemonsoft.lemonkit.base.LKActivity;
 
@@ -12,12 +12,12 @@ import net.lemonsoft.lemonkit.base.LKActivity;
 public class MainActivity extends LKActivity {
 
     private TextView myTextView;
-    @FindView(R.id.myImageView)
-    private ImageView imageView;
+    private ImageView myImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        myImageView.setBackgroundColor(Color.RED);
     }
 
 }

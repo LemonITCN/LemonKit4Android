@@ -12,6 +12,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface FindView {
 
-    public int id() default 0;
+    int value() default 0;
 
 }

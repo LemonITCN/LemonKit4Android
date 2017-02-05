@@ -1,4 +1,4 @@
-package net.lemonsoft.lemonkit.core;
+package net.lemonsoft.lemonkit.core.parser;
 
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
@@ -13,7 +13,7 @@ import net.lemonsoft.lemonkit.model.LKUIExtensionModel;
  * Created by LiuRi on 2017/1/25.
  */
 
-public final class LKUIAttrsCore {
+public final class LKUIAttrsParser {
 
     /**
      * 解析LKUI扩展的XML属性
@@ -21,7 +21,7 @@ public final class LKUIAttrsCore {
      * @param view  要作用于的控件
      * @param attrs XML属性集
      */
-    public static LKUIExtensionModel p(View view, AttributeSet attrs) {
+    public static LKUIExtensionModel parse(View view, AttributeSet attrs) {
         LKUIExtensionModel extModel = new LKUIExtensionModel();
         // 解析attrs并设置
         TypedArray array = ((View) view).getContext().obtainStyledAttributes(attrs, R.styleable.View);

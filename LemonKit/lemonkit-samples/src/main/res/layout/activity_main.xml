@@ -23,6 +23,7 @@
         lk:cornerRadius="68dp" />
 
     <ImageView
+        android:id="@+id/myImageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="10dp"

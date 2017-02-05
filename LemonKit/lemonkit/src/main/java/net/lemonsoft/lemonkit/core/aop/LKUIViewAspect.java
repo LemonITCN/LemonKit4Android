@@ -1,4 +1,4 @@
-package net.lemonsoft.lemonkit.core;
+package net.lemonsoft.lemonkit.core.aop;
 
 
 import android.graphics.Canvas;
@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.view.View;
 
+import net.lemonsoft.lemonkit.core.parser.LKUIAttrsParser;
 import net.lemonsoft.lemonkit.enums.LKUIDelegateOnDrawState;
 import net.lemonsoft.lemonkit.interfaces.ui.LKUIView;
 import net.lemonsoft.lemonkit.model.LKUIExtensionModel;
@@ -26,7 +27,7 @@ import org.aspectj.lang.annotation.Before;
  * Created by lemonsoft on 2017/1/31.
  */
 @Aspect
-public class LKUIAspect {
+public class LKUIViewAspect {
 
     // 存储LKUIExtensionModel对象的池，使用SparseArray，而不是Map，为了提高效率
     private static SparseArray<LKUIExtensionModel> lkPool = new SparseArray<>();
@@ -38,7 +39,7 @@ public class LKUIAspect {
         Object[] args = joinPoint.getArgs();
         LKUIExtensionModel model = new LKUIExtensionModel();
         if (args.length >= 2)
-            model = LKUIAttrsCore.p((View) joinPoint.getTarget(), (AttributeSet) args[1]);
+            model = LKUIAttrsParser.parse((View) joinPoint.getTarget(), (AttributeSet) args[1]);
         lkPool.put(getLKKey(joinPoint), model);
         applyLKComplete(model, (LKUIView) joinPoint.getTarget());
     }

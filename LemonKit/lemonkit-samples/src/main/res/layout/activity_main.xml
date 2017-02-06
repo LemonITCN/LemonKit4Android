@@ -41,5 +41,4 @@
         lk:borderWidth="8dp"
         lk:clipToBounds="true"
         lk:cornerRadius="50dp" />
-
 </LinearLayout>

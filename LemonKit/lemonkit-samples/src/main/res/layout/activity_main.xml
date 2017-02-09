@@ -6,17 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="net.lemonsoft.lemonkit_samples.MainActivity">
 
     <TextView
         android:id="@+id/myTextView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="@mipmap/ic_launcher"
+        android:background="@mipmap/main_app_icon"
         android:text="LemonKit-TextView"
         lk:borderColor="#ff0000"
         lk:borderWidth="10dp"
@@ -27,7 +23,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="10dp"
-        android:src="@mipmap/ic_launcher"
+        android:src="@mipmap/main_app_icon"
         lk:borderColor="#000000"
         lk:borderWidth="10dp"
         lk:cornerRadius="50dp" />
@@ -41,4 +37,29 @@
         lk:borderWidth="8dp"
         lk:clipToBounds="true"
         lk:cornerRadius="50dp" />
+
+    <LK.TabBar
+        android:id="@+id/tabBar"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_alignParentBottom="true"
+        lk:defaultColor="#abcdef"
+        lk:defaultSelectedColor="#FF0000">
+
+        <LK.TabBarItem
+            android:text="服务"
+            lk:icon="@mipmap/main_tab_homepage" />
+
+        <LK.TabBarItem
+            android:text="服务"
+            lk:icon="@mipmap/main_tab_demo" />
+
+        <LK.TabBarItem
+            android:text="服务"
+            lk:icon="@mipmap/main_tab_service" />
+
+        <LK.TabBarItem
+            android:text="我的"
+            lk:icon="@mipmap/main_tab_my" />
+    </LK.TabBar>
 </LinearLayout>

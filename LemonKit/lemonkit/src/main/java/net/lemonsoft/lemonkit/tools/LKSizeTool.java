@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
+import net.lemonsoft.lemonkit.core.LemonKit;
 import net.lemonsoft.lemonkit.core.graphics.CGRect;
 
 
@@ -25,11 +26,18 @@ public class LKSizeTool {
         return _privateSizeTool;
     }
 
-    public void setContext(Context context) {
-        _density = context.getResources().getDisplayMetrics().density;
+    public LKSizeTool() {
+        _density = LemonKit.sharedInstance().getAppContext().getResources().getDisplayMetrics().density;
         _metrics = new DisplayMetrics();
-        ((WindowManager) (context.getSystemService(Context.WINDOW_SERVICE))).getDefaultDisplay().getMetrics(_metrics);
+        ((WindowManager) (LemonKit.sharedInstance().getAppContext().getSystemService(Context.WINDOW_SERVICE))).getDefaultDisplay().getMetrics(_metrics);
     }
+
+    // 将该工具类拷贝到工程单独使用（脱离LemoNkit）时候解开注释
+//    public void setContext(Context context) {
+//        _density = context.getResources().getDisplayMetrics().density;
+//        _metrics = new DisplayMetrics();
+//        ((WindowManager) (context.getSystemService(Context.WINDOW_SERVICE))).getDefaultDisplay().getMetrics(_metrics);
+//    }
 
     /**
      * 换算dp到px
@@ -77,6 +85,24 @@ public class LKSizeTool {
      */
     public int screenHeightDp() {
         return pxToDp(_metrics.heightPixels);
+    }
+
+    /**
+     * 获取屏幕的宽，单位px
+     *
+     * @return 屏幕宽度dp值
+     */
+    public int screenWidthPx() {
+        return _metrics.widthPixels;
+    }
+
+    /**
+     * 获取屏幕的高，单位px
+     *
+     * @return 屏幕高度的dp值
+     */
+    public int screenHeightPx() {
+        return _metrics.heightPixels;
     }
 
     /**

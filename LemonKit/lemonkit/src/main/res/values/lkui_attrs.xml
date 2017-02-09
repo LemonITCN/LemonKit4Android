@@ -8,4 +8,16 @@
         <attr name="clipToBounds" format="boolean" />
     </declare-styleable>
 
+    <declare-styleable name="LKTabBarItem">
+        <attr name="icon" format="reference" />
+        <attr name="selectedIcon" format="reference" />
+        <attr name="color" format="color" />
+        <attr name="selectedColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="LKTabBar">
+        <attr name="defaultColor" format="color" />
+        <attr name="defaultSelectedColor" format="color" />
+    </declare-styleable>
+
 </resources>

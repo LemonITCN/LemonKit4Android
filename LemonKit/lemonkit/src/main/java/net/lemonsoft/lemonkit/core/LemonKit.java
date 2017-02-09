@@ -1,6 +1,7 @@
 package net.lemonsoft.lemonkit.core;
 
 import android.app.Application;
+import android.content.Context;
 
 /**
  * LemonKit入口类
@@ -38,4 +39,10 @@ public class LemonKit {
         started = true;
     }
 
+    public Context getAppContext() {
+        if (started)
+            return application.getApplicationContext();
+        new Exception("LemonKit have not start!").printStackTrace();
+        return null;
+    }
 }

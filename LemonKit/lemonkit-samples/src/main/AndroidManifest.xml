@@ -9,13 +9,14 @@
         android:supportsRtl="true"
         android:name=".LemonKitSamplesApplication"
         android:theme="@style/AppTheme">
-        <activity android:name="net.lemonsoft.lemonkit_samples.MainActivity">
+        <activity android:name="net.lemonsoft.lemonkit_samples.activities.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activities.main.StarterActivity"/>
     </application>
 
 </manifest>

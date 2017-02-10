@@ -1,5 +1,6 @@
 package net.lemonsoft.lemonkit.ui.view;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -7,6 +8,8 @@ import android.support.annotation.ColorInt;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.RelativeLayout;
 
 import net.lemonsoft.lemonkit.R;
@@ -21,8 +24,12 @@ import java.util.List;
  */
 public class LKTabBar extends RelativeLayout {
 
-    private int defaultColor = Color.parseColor("#aaaaaa");
-    private int defaultSelectedColor = Color.parseColor("#4169E1");
+    private static final int DEFAULT_COLOR = Color.parseColor("#aaaaaa");
+    private static final int DEFAULT_SELECTED_COLOR = Color.parseColor("#4169E1");
+    private static final int DEFAULT_BACKGROUND_COLOR = Color.parseColor("#ebebeb");
+
+    private int defaultColor = DEFAULT_COLOR;
+    private int defaultSelectedColor = DEFAULT_SELECTED_COLOR;
 
     private LKSizeTool _ST = LKSizeTool.getDefaultSizeTool();
 
@@ -56,13 +63,13 @@ public class LKTabBar extends RelativeLayout {
         init();
         TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.LKTabBar);
         assert array != null;// 断言array不为空
-        setDefaultColor(array.getColor(R.styleable.LKTabBar_defaultColor, Color.parseColor("#aaaaaa")));
-        setDefaultSelectedColor(array.getColor(R.styleable.LKTabBar_defaultSelectedColor, Color.parseColor("#4169E1")));
+        setDefaultColor(array.getColor(R.styleable.LKTabBar_defaultColor, DEFAULT_COLOR));
+        setDefaultSelectedColor(array.getColor(R.styleable.LKTabBar_defaultSelectedColor, DEFAULT_SELECTED_COLOR));
     }
 
     private void init() {
         if (getBackground() == null)
-            setBackgroundColor(Color.parseColor("#e8e8e8"));
+            setBackgroundColor(DEFAULT_BACKGROUND_COLOR);
     }
 
     // item呼叫入口，说明被改变了
@@ -93,6 +100,7 @@ public class LKTabBar extends RelativeLayout {
         if (child instanceof LKTabBarItem) {
             this.items.add((LKTabBarItem) child);
             ((LKTabBarItem) child).belongTabBar = this;// 设置归属tabBar
+            ((LKTabBarItem) child).setChecked(((LKTabBarItem) child).isChecked());
         }
     }
 
@@ -141,8 +149,7 @@ public class LKTabBar extends RelativeLayout {
 
         @Override
         protected void setBaseAttributes(TypedArray a, int widthAttr, int heightAttr) {
-            width = WRAP_CONTENT;
-            height = WRAP_CONTENT;
+            width = height = WRAP_CONTENT;
         }
     }
 

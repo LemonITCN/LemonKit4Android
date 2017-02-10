@@ -13,6 +13,7 @@ import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 
 import net.lemonsoft.lemonkit.R;
+import net.lemonsoft.lemonkit.tools.LKSizeTool;
 
 
 /**
@@ -20,6 +21,8 @@ import net.lemonsoft.lemonkit.R;
  * Created by lemonsoft on 2017/2/7.
  */
 public class LKTabBarItem extends RadioButton {
+    private LKSizeTool _ST = LKSizeTool.getDefaultSizeTool();
+
     // 默认颜色
     private int color = -1;
     // 选中颜色，当没有设置selectedIcon的时候使用此颜色渲染图标
@@ -98,7 +101,7 @@ public class LKTabBarItem extends RadioButton {
     public void setIcon(Drawable icon) {
         this.icon = icon;
         if (icon != null)
-            icon.setBounds(0, 20, 60, 80);
+            icon.setBounds(0, 20, 70, 90);
         if (!isChecked())
             setChecked(false);
     }
@@ -109,7 +112,7 @@ public class LKTabBarItem extends RadioButton {
 
     public void setSelectedIcon(Drawable selectedIcon) {
         if (selectedIcon != null)
-            selectedIcon.setBounds(0, 20, 60, 80);
+            selectedIcon.setBounds(0, 20, 80, 100);
         this.selectedIcon = selectedIcon;
         if (isChecked())
             setChecked(true);

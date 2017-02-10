@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:lk="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="net.lemonsoft.lemonkit_samples.MainActivity">
+    tools:context="net.lemonsoft.lemonkit_samples.activities.main.MainActivity">
 
     <TextView
         android:id="@+id/myTextView"
@@ -18,32 +18,12 @@
         lk:borderWidth="10dp"
         lk:cornerRadius="68dp" />
 
-    <ImageView
-        android:id="@+id/myImageView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="10dp"
-        android:src="@mipmap/main_app_icon"
-        lk:borderColor="#000000"
-        lk:borderWidth="10dp"
-        lk:cornerRadius="50dp" />
-
-    <RelativeLayout
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="10dp"
-        android:background="#ccaabb"
-        lk:borderColor="#00f"
-        lk:borderWidth="8dp"
-        lk:clipToBounds="true"
-        lk:cornerRadius="50dp" />
 
     <LK.TabBar
         android:id="@+id/tabBar"
         android:layout_width="match_parent"
         android:layout_height="49dp"
         android:layout_alignParentBottom="true"
-        lk:defaultColor="#abcdef"
         lk:defaultSelectedColor="#FF0000">
 
         <LK.TabBarItem
@@ -62,4 +42,4 @@
             android:text="我的"
             lk:icon="@mipmap/main_tab_my" />
     </LK.TabBar>
-</LinearLayout>
+</RelativeLayout>

@@ -6,12 +6,15 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 
 import net.lemonsoft.lemonkit.core.parser.LKUIAnnotationParser;
+import net.lemonsoft.lemonkit.tools.LKSizeTool;
 
 /**
  * LKActivity，对原Activity的封装和增强
  * Created by lemonsoft on 2017/1/30.
  */
 public class LKActivity extends Activity {
+
+    public LKSizeTool _ST = LKSizeTool.getDefaultSizeTool();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

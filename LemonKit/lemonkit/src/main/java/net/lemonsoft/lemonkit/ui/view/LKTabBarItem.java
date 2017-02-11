@@ -101,7 +101,7 @@ public class LKTabBarItem extends RadioButton {
     public void setIcon(Drawable icon) {
         this.icon = icon;
         if (icon != null)
-            icon.setBounds(0, 20, 70, 90);
+            icon.setBounds(0, 0, 70, 70);
         if (!isChecked())
             setChecked(false);
     }
@@ -112,7 +112,7 @@ public class LKTabBarItem extends RadioButton {
 
     public void setSelectedIcon(Drawable selectedIcon) {
         if (selectedIcon != null)
-            selectedIcon.setBounds(0, 20, 80, 100);
+            selectedIcon.setBounds(0, 0, 70, 70);
         this.selectedIcon = selectedIcon;
         if (isChecked())
             setChecked(true);

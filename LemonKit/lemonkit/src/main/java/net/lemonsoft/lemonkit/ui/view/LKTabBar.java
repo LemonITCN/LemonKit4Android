@@ -89,6 +89,7 @@ public class LKTabBar extends RelativeLayout {
     private void refresh() {
         for (int i = 0; i < items.size(); i++) {
             LKTabBarItem child = items.get(i);
+            child.setY(10);
             child.setLayoutParams(new RelativeLayout.LayoutParams(180, ViewGroup.LayoutParams.MATCH_PARENT));
             child.setX(_ST.screenWidthPx() / items.size() / 2 + (_ST.screenWidthPx() / items.size() * i) - 180 / 2);
         }

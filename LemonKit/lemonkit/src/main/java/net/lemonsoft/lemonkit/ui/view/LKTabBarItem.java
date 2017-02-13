@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.annotation.ColorInt;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -49,6 +50,12 @@ public class LKTabBarItem extends RadioButton {
         setSelectedColor(array.getColor(R.styleable.LKTabBarItem_selectedColor, -1));
         setIcon(array.getDrawable(R.styleable.LKTabBarItem_icon));
         setSelectedIcon(array.getDrawable(R.styleable.LKTabBarItem_selectedIcon));
+    }
+
+    @Override
+    public void setLayoutParams(ViewGroup.LayoutParams params) {
+        super.setLayoutParams(params);
+        measure(0, 0);
     }
 
     public void select() {
@@ -100,10 +107,21 @@ public class LKTabBarItem extends RadioButton {
 
     public void setIcon(Drawable icon) {
         this.icon = icon;
-        if (icon != null)
-            icon.setBounds(0, 0, 70, 70);
+        if (icon != null) {
+            if (getMeasuredHeight() <= 0)
+                measure(0, 0);
+            int iconWidth = (int) (getMeasuredHeight() * 0.72);
+            icon.setBounds(0, 0, iconWidth, iconWidth);
+        }
         if (!isChecked())
             setChecked(false);
+    }
+
+    public void setIcon(int iconId) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+            this.setIcon(getContext().getDrawable(iconId));
+        else
+            this.setIcon(getResources().getDrawable(iconId));
     }
 
     public Drawable getSelectedIcon() {
@@ -111,8 +129,6 @@ public class LKTabBarItem extends RadioButton {
     }
 
     public void setSelectedIcon(Drawable selectedIcon) {
-        if (selectedIcon != null)
-            selectedIcon.setBounds(0, 0, 70, 70);
         this.selectedIcon = selectedIcon;
         if (isChecked())
             setChecked(true);

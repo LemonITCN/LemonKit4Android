@@ -3,20 +3,20 @@
     package="net.lemonsoft.lemonkit_samples">
 
     <application
+        android:name=".LemonKitSamplesApplication"
         android:allowBackup="true"
         android:icon="@mipmap/main_app_icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:name=".LemonKitSamplesApplication"
         android:theme="@style/AppTheme">
-        <activity android:name="net.lemonsoft.lemonkit_samples.activities.main.MainActivity">
+        <activity android:name="net.lemonsoft.lemonkit_samples.activities.main.StarterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.main.StarterActivity"/>
+        <activity android:name=".activities.main.MainActivity" />
     </application>
 
 </manifest>

@@ -8,38 +8,10 @@
     android:orientation="vertical"
     tools:context="net.lemonsoft.lemonkit_samples.activities.main.MainActivity">
 
-    <TextView
-        android:id="@+id/myTextView"
+    <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="@mipmap/main_app_icon"
-        android:text="LemonKit-TextView"
-        lk:borderColor="#ff0000"
-        lk:borderWidth="10dp"
-        lk:cornerRadius="68dp" />
+        android:src="@mipmap/main_app_icon"
+        lk:borderRadius="50dp" />
 
-
-    <LK.TabBar
-        android:id="@+id/tabBar"
-        android:layout_width="match_parent"
-        android:layout_height="49dp"
-        android:layout_alignParentBottom="true"
-        lk:defaultSelectedColor="#FF0000">
-
-        <LK.TabBarItem
-            android:text="服务"
-            lk:icon="@mipmap/main_tab_homepage" />
-
-        <LK.TabBarItem
-            android:text="服务"
-            lk:icon="@mipmap/main_tab_demo" />
-
-        <LK.TabBarItem
-            android:text="服务"
-            lk:icon="@mipmap/main_tab_service" />
-
-        <LK.TabBarItem
-            android:text="我的"
-            lk:icon="@mipmap/main_tab_my" />
-    </LK.TabBar>
 </RelativeLayout>

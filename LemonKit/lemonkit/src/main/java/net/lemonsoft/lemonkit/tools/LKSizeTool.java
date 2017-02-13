@@ -1,7 +1,11 @@
 package net.lemonsoft.lemonkit.tools;
 
+import android.app.Activity;
 import android.content.Context;
+import android.os.Build;
+import android.support.v7.app.ActionBarActivity;
 import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.WindowManager;
 
 import net.lemonsoft.lemonkit.core.LemonKit;
@@ -112,6 +116,61 @@ public class LKSizeTool {
      */
     public CGRect screenFrame() {
         return CGRect.make(0, 0, screenWidthDp(), screenHeightDp());
+    }
+
+    /**
+     * 获取actionbar的像素高度，默认使用android官方兼容包做actionbar兼容
+     *
+     * @return
+     */
+    public int actionBarHeight(Activity activity) {
+
+        int actionBarHeight = activity.getActionBar().getHeight();
+        if (actionBarHeight != 0) {
+            return actionBarHeight;
+        }
+
+        final TypedValue tv = new TypedValue();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            if (activity.getTheme()
+                    .resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
+                actionBarHeight = TypedValue.complexToDimensionPixelSize(
+                        tv.data, _metrics);
+            }
+        } else {
+            // 使用android.support.v7.appcompat包做actionbar兼容的情况
+            if (activity.getTheme()
+                    .resolveAttribute(
+                            android.support.v7.appcompat.R.attr.actionBarSize,
+                            tv, true)) {
+                actionBarHeight = TypedValue.complexToDimensionPixelSize(
+                        tv.data, _metrics);
+            }
+
+        }
+        return actionBarHeight;
+    }
+
+    /**
+     * 获取状态栏高度
+     */
+    public int statusBarHeight() {
+        Class<?> c = null;
+        Object obj = null;
+        java.lang.reflect.Field field = null;
+        int x = 0;
+        int statusBarHeight = 0;
+        try {
+            c = Class.forName("com.android.internal.R$dimen");
+            obj = c.newInstance();
+            field = c.getField("status_bar_height");
+            x = Integer.parseInt(field.get(obj).toString());
+            statusBarHeight = LemonKit.sharedInstance().getAppContext().getResources().getDimensionPixelSize(x);
+            return statusBarHeight;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return statusBarHeight;
     }
 
 }

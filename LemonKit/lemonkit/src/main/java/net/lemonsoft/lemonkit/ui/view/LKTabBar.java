@@ -1,6 +1,5 @@
 package net.lemonsoft.lemonkit.ui.view;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -8,8 +7,6 @@ import android.support.annotation.ColorInt;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.RelativeLayout;
 
 import net.lemonsoft.lemonkit.R;
@@ -87,11 +84,14 @@ public class LKTabBar extends RelativeLayout {
      * 刷新显示UI
      */
     private void refresh() {
+        measure(0, 0);
         for (int i = 0; i < items.size(); i++) {
             LKTabBarItem child = items.get(i);
-            child.setY(10);
-            child.setLayoutParams(new RelativeLayout.LayoutParams(180, ViewGroup.LayoutParams.MATCH_PARENT));
-            child.setX(_ST.screenWidthPx() / items.size() / 2 + (_ST.screenWidthPx() / items.size() * i) - 180 / 2);
+            int childWidth = _ST.screenWidthPx() / items.size();
+            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(childWidth, RelativeLayout.LayoutParams.WRAP_CONTENT);
+            params.addRule(RelativeLayout.CENTER_VERTICAL);
+            child.setLayoutParams(params);
+            child.setX(_ST.screenWidthPx() / items.size() / 2 + (_ST.screenWidthPx() / items.size() * i) - childWidth / 2);
         }
     }
 

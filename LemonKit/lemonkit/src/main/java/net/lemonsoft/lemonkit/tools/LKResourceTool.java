@@ -51,6 +51,13 @@ public class LKResourceTool {
     }
 
     /**
+     * 根据color的ID字符串获取真实的color ID int类型
+     */
+    public static int getColorId(Context context, String name) {
+        return getId(context, "color", name);
+    }
+
+    /**
      * 通过控件的ID字符串直接获取到控件对象
      */
     public static View findViewByIdStr(Activity activity, String name) {

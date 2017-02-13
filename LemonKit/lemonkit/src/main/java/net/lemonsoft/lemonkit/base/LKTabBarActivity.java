@@ -1,8 +1,8 @@
 package net.lemonsoft.lemonkit.base;
 
 import android.app.Fragment;
-import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.ViewGroup;
 
 import net.lemonsoft.lemonkit.ui.view.LKTabBar;
@@ -17,8 +17,6 @@ import java.util.List;
 public class LKTabBarActivity extends LKActivity {
 
     private LKTabBar tabBar;
-    private List<Fragment> fragments;
-    private List<android.support.v4.app.Fragment> v4Fragments;
     private static final int TAB_BAR_DEFAULT_HEIGHT = 52;
 
     @Override
@@ -30,10 +28,11 @@ public class LKTabBarActivity extends LKActivity {
 
     private void _initTabBar() {
         this.tabBar = new LKTabBar(this);
-        this.tabBar.setY(_ST.screenHeightPx() - _ST.DP(TAB_BAR_DEFAULT_HEIGHT) - 200);
+        this.tabBar.setY(_ST.screenHeightPx() - _ST.DP(TAB_BAR_DEFAULT_HEIGHT) - _ST.actionBarHeight(this) - _ST.statusBarHeight());
         for (int i = 0; i < tabItemCount(this, this.tabBar); i++) {
             this.tabBar.getItems().add(createTabBarItem(this, this.tabBar, i));
         }
+        this.tabBar.getItems().get(0).select();// 默认选中第一个选项卡
     }
 
     protected int tabItemCount(LKTabBarActivity activity, LKTabBar tabBar) {
@@ -44,7 +43,15 @@ public class LKTabBarActivity extends LKActivity {
         return null;
     }
 
-    protected Fragment createFrament(LKTabBarActivity activity, LKTabBar tabBar, int index) {
+    protected Fragment createWithFragment(LKTabBarActivity activity, LKTabBar tabBar, int index) {
+        return null;
+    }
+
+    protected android.support.v4.app.Fragment createWithV4Fragment(LKTabBarActivity activity, LKTabBar tabBar, int index) {
+        return null;
+    }
+
+    protected Class createWithFragmentClass(LKTabBarActivity activity, LKTabBar tabBar, int index) {
         return null;
     }
 

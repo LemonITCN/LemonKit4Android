@@ -19,8 +19,5 @@ public class HomepageFragment extends LKFragment {
     @Override
     protected void initView(View view) {
         super.initView(view);
-        if (myTextView != null)
-            myTextView.setText("hello");
-        System.out.println("initView  cacaca");
     }
 }

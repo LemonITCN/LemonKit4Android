@@ -1,8 +1,11 @@
 package net.lemonsoft.lemonkit_samples.activities.main;
 
+import android.graphics.Color;
+
 import net.lemonsoft.lemonkit.annotations.SetContentView;
 import net.lemonsoft.lemonkit.base.LKTabActivity;
 import net.lemonsoft.lemonkit.tools.LKColorTool;
+import net.lemonsoft.lemonkit.tools.LKStatusBarTool;
 import net.lemonsoft.lemonkit.ui.view.LKTabBar;
 import net.lemonsoft.lemonkit.ui.view.LKTabBarItem;
 import net.lemonsoft.lemonkit_samples.R;
@@ -34,5 +37,11 @@ public class MainActivity extends LKTabActivity {
     protected Class createWithFragmentClass(LKTabActivity activity, LKTabBar tabBar, int index) {
         Class[] classes = {HomepageFragment.class, DemoFragment.class, ServiceFragment.class, MyFragment.class};
         return classes[index];
+    }
+
+    @Override
+    protected void initView() {
+        super.initView();
+        LKStatusBarTool.setBackgroundColor(this, Color.RED);
     }
 }

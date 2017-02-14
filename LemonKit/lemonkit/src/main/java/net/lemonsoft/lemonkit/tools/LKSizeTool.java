@@ -119,35 +119,21 @@ public class LKSizeTool {
     }
 
     /**
-     * 获取actionbar的像素高度，默认使用android官方兼容包做actionbar兼容
-     *
-     * @return
+     * 获取ActionBar的高度
+     * 隐藏，或者主题中不包括系统自带ActionBar，那么返回0
      */
     public int actionBarHeight(Activity activity) {
-
+        if (activity.getActionBar() == null || !activity.getActionBar().isShowing())
+            return 0;
         int actionBarHeight = activity.getActionBar().getHeight();
-        if (actionBarHeight != 0) {
+        if (actionBarHeight != 0)
             return actionBarHeight;
-        }
-
         final TypedValue tv = new TypedValue();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            if (activity.getTheme()
-                    .resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
-                actionBarHeight = TypedValue.complexToDimensionPixelSize(
-                        tv.data, _metrics);
-            }
-        } else {
-            // 使用android.support.v7.appcompat包做actionbar兼容的情况
-            if (activity.getTheme()
-                    .resolveAttribute(
-                            android.support.v7.appcompat.R.attr.actionBarSize,
-                            tv, true)) {
-                actionBarHeight = TypedValue.complexToDimensionPixelSize(
-                        tv.data, _metrics);
-            }
-
-        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB
+                && activity.getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true))
+            actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data, _metrics);
+        else if (activity.getTheme().resolveAttribute(android.support.v7.appcompat.R.attr.actionBarSize, tv, true))
+            actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data, _metrics);
         return actionBarHeight;
     }
 
@@ -155,10 +141,11 @@ public class LKSizeTool {
      * 获取状态栏高度
      */
     public int statusBarHeight() {
-        Class<?> c = null;
-        Object obj = null;
+        // 由于无法直接获取状态栏高度，所以使用反射来间接刚获取
+        Class<?> c;
+        Object obj;
         java.lang.reflect.Field field = null;
-        int x = 0;
+        int x;
         int statusBarHeight = 0;
         try {
             c = Class.forName("com.android.internal.R$dimen");

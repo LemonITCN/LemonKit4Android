@@ -14,6 +14,12 @@ import android.view.WindowManager;
 
 public class LKStatusBarTool {
 
+    /**
+     * 获取状态栏的高度
+     */
+    public int statusBarHeight() {
+        return LKSizeTool.getDefaultSizeTool().statusBarHeight();
+    }
 
     public static void setBackgroundColor(Activity activity, @ColorInt int color) {
         setBackgroundColor(activity.getWindow(), color);

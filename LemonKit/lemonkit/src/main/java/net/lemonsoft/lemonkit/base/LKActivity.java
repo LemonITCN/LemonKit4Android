@@ -20,6 +20,10 @@ public class LKActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         LKUIAnnotationParser.parse(this); // 解析注解
+        initView();
+    }
+
+    protected void initView() {
     }
 
     public void startActivity(Class<Activity> activityClass) {

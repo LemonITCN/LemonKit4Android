@@ -24,17 +24,9 @@ import org.w3c.dom.Text;
 @SetContentView(R.layout.activity_starter)
 public class StarterActivity extends LKActivity {
 
-    private TextView myTextView;
-    private ImageView myImageView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        myTextView.setText("hello lemonkit");
-
-
-
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

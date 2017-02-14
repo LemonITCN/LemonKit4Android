@@ -3,7 +3,6 @@ package net.lemonsoft.lemonkit.base;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -19,7 +18,7 @@ import java.util.List;
  * Created by LiuRi on 2017/2/10.
  */
 
-public class LKTabBarActivity extends LKActivity {
+public class LKTabActivity extends LKActivity {
 
     private LKTabBar tabBar;
     private List<Fragment> fragments = new ArrayList<>();
@@ -87,15 +86,15 @@ public class LKTabBarActivity extends LKActivity {
             fragments.add(_createWithFragment(this, this.tabBar, i));
     }
 
-    protected int tabItemCount(LKTabBarActivity activity, LKTabBar tabBar) {
+    protected int tabItemCount(LKTabActivity activity, LKTabBar tabBar) {
         return 0;
     }
 
-    protected LKTabBarItem createTabBarItem(LKTabBarActivity activity, LKTabBar tabBar, int index) {
+    protected LKTabBarItem createTabBarItem(LKTabActivity activity, LKTabBar tabBar, int index) {
         return null;
     }
 
-    private Fragment _createWithFragment(LKTabBarActivity activity, LKTabBar tabBar, int index) {
+    private Fragment _createWithFragment(LKTabActivity activity, LKTabBar tabBar, int index) {
         Fragment fragment = null;
         try {
             Class fragmentClass = createWithFragmentClass(activity, tabBar, index);
@@ -110,12 +109,12 @@ public class LKTabBarActivity extends LKActivity {
     }
 
     // 优先度 - 1
-    protected Class createWithFragmentClass(LKTabBarActivity activity, LKTabBar tabBar, int index) {
+    protected Class createWithFragmentClass(LKTabActivity activity, LKTabBar tabBar, int index) {
         return null;
     }
 
     // 优先度 - 2
-    protected Fragment createWithFragmentInstance(LKTabBarActivity activity, LKTabBar tabBar, int index) {
+    protected Fragment createWithFragmentInstance(LKTabActivity activity, LKTabBar tabBar, int index) {
         return null;
     }
 

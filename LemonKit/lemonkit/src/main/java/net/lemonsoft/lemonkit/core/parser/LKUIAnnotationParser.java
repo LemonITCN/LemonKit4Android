@@ -92,14 +92,14 @@ public class LKUIAnnotationParser {
                     if (findView.value() > 0)
                         fieldItem.set(fragment, container.findViewById(findView.value()));
                     else // 如果没有设置view的id，那么自动尝试以属性名作为id进行查询赋值
-                        fieldItem.set(fragment, LKResourceTool.findViewByIdStr(fragment.getActivity(), fieldItem.getName()));
+                        fieldItem.set(fragment, LKResourceTool.findViewByIdStr(rView, fieldItem.getName()));
                 else if (!ignoreNoFindViewField)// 没有配置FindView注解并且没有设置忽略无注解属性（ignoreNoFindViewField为false），尝试以属性名作为id，进行查询赋值
-                    fieldItem.set(fragment, LKResourceTool.findViewByIdStr(fragment.getActivity(), fieldItem.getName()));
+                    fieldItem.set(fragment, LKResourceTool.findViewByIdStr(rView, fieldItem.getName()));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return rView == null ? new View(fragment.getActivity()) : rView ;
+        return rView == null ? new View(fragment.getActivity()) : rView;
     }
 
 }

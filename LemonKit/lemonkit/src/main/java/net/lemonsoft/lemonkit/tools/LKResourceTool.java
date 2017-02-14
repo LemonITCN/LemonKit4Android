@@ -65,6 +65,13 @@ public class LKResourceTool {
     }
 
     /**
+     * 通过控件的ID字符串直接获取到控件对象
+     */
+    public static View findViewByIdStr(View view, String name) {
+        return view.findViewById(getViewId(view.getContext(), name));
+    }
+
+    /**
      * 根据字符串id名称字符串直接获取到字符串对应的对象
      */
     public static String findStringByIdStr(Activity activity, String name) {

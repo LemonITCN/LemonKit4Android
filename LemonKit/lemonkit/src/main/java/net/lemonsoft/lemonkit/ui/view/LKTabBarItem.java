@@ -16,6 +16,8 @@ import android.widget.RelativeLayout;
 import net.lemonsoft.lemonkit.R;
 import net.lemonsoft.lemonkit.tools.LKSizeTool;
 
+import java.lang.reflect.Field;
+
 
 /**
  * LemonKit扩展选项卡栏 - 选项
@@ -65,6 +67,16 @@ public class LKTabBarItem extends RadioButton {
     public void initView() {
         //隐藏默认单选按钮
         this.setButtonDrawable(null);
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
+            //
+            try {
+                Field field = this.getClass().getSuperclass().getSuperclass().getDeclaredField("mButtonDrawable");
+                field.setAccessible(true);
+                field.set(this, null);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         this.setTextSize(10);
         this.setGravity(Gravity.CENTER);
     }

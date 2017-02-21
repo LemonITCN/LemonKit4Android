@@ -48,7 +48,4 @@ public class LKNavigationInfo {
     public List<LKNavigationBarButtonItem> getRightBarButtonItems() {
         return rightBarButtonItems;
     }
-
-    
-
 }

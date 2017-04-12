@@ -1,7 +1,7 @@
 package net.lemonsoft.lemonkit.interfaces.ui;
 
 import net.lemonsoft.lemonkit.core.graphics.CGPoint;
-import net.lemonsoft.lemonkit.ui.view.LKScrollView;
+import net.lemonsoft.lemonkit.ui.view.LKUIScrollView;
 
 /**
  * LKScrollView的代理函数
@@ -13,7 +13,7 @@ public interface LKScrollViewDelegate {
     /**
      * 只要ScrollView的内容偏移被改变，就会被回调
      */
-    void scrollViewDidScroll(LKScrollView scrollView);
+    void scrollViewDidScroll(LKUIScrollView scrollView);
 
     // TODO
     /**
@@ -24,7 +24,7 @@ public interface LKScrollViewDelegate {
     /**
      * 手指触摸ScrollView将要滑动时候被回调
      */
-    void scrollViewWillBeginDragging(LKScrollView scrollView);
+    void scrollViewWillBeginDragging(LKUIScrollView scrollView);
 
     /**
      * 手指即将停止触摸的时候被回调
@@ -32,31 +32,31 @@ public interface LKScrollViewDelegate {
      * @param velocity            当前scrollView滚动的速度
      * @param targetContentOffset 照此速度移动的话的最终点
      */
-    void scrollViewWillEndDragging(LKScrollView scrollView, CGPoint velocity, CGPoint targetContentOffset);
+    void scrollViewWillEndDragging(LKUIScrollView scrollView, CGPoint velocity, CGPoint targetContentOffset);
 
     /**
      * 当手指离开ScrollView时回调该方法
      *
      * @param decelerate 是否继续移动，如果继续移动，那么为true
      */
-    void scrollViewDidEndDragging(LKScrollView scrollView, boolean decelerate);
+    void scrollViewDidEndDragging(LKUIScrollView scrollView, boolean decelerate);
 
     /**
      * 当手指离开ScrollView，滚动开始减速的时候调用
      */
-    void scrollViewWillBeginDecelerating(LKScrollView scrollView);
+    void scrollViewWillBeginDecelerating(LKUIScrollView scrollView);
 
     /**
      * 当手指离开ScrollView，滚动减速到停止后调用
      */
-    void scrollViewDidEndDecelerating(LKScrollView scrollView);
+    void scrollViewDidEndDecelerating(LKUIScrollView scrollView);
 
     /**
      * 当ScrollView执行完动画之后被调用，通常指的是执行下面两个函数后被调用
      * setContentOffset()
      * scrollRectToVisible()
      */
-    void scrollViewDidEndScrollingAnimation(LKScrollView scrollView);
+    void scrollViewDidEndScrollingAnimation(LKUIScrollView scrollView);
 
 //    TODO
 

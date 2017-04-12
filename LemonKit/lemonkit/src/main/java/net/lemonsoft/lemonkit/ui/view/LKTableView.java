@@ -29,7 +29,7 @@ import java.util.List;
  * Created by LiuRi on 2017/1/11.
  */
 
-public class LKTableView extends LKScrollView {
+public class LKTableView extends LKUIScrollView {
     private ViewDragHelper mDragHelper;
     private GestureDetectorCompat mGestureDetector;
     float downY = 0;
@@ -74,7 +74,7 @@ public class LKTableView extends LKScrollView {
         initTableView();
         this.setDelegate(new LKScrollViewDelegateAdapter() {
             @Override
-            public void scrollViewDidScroll(LKScrollView scrollView) {
+            public void scrollViewDidScroll(LKUIScrollView scrollView) {
                 super.scrollViewDidScroll(scrollView);
                 //共多少条
                 int countPage = spaceOfLocation(contentViewHeight);
@@ -306,7 +306,7 @@ public class LKTableView extends LKScrollView {
                         ((LKHorizontalScrollView) v).smoothScrollTo(finalActionWidth, 0);// 平滑移动到完全打开
                     }
                     //抬起后滑动手势重新初始化
-                    LKScrollView.touchFlage = false;
+                    LKUIScrollView.touchFlage = false;
                     flage = true;
                     return true;// 这里返回true，否则smoothScrollTo不可用
                 }
@@ -705,7 +705,7 @@ public class LKTableView extends LKScrollView {
         // 决定当前的SwipeLayout是否要把touch事件拦截下来，直接交由自己的onTouchEvent处理
         // 返回true则为拦截
         flage = mGestureDetector.onTouchEvent(ev);
-        LKScrollView.touchFlage = !flage;
+        LKUIScrollView.touchFlage = !flage;
         if (flage)
             closeCurrentSlide();
         return flage;

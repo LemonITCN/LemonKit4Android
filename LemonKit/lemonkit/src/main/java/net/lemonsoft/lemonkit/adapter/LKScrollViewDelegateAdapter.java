@@ -3,7 +3,7 @@ package net.lemonsoft.lemonkit.adapter;
 
 import net.lemonsoft.lemonkit.core.graphics.CGPoint;
 import net.lemonsoft.lemonkit.interfaces.ui.LKScrollViewDelegate;
-import net.lemonsoft.lemonkit.ui.view.LKScrollView;
+import net.lemonsoft.lemonkit.ui.view.LKUIScrollView;
 
 /**
  * Created by LiuRi on 2017/1/9.
@@ -12,37 +12,37 @@ import net.lemonsoft.lemonkit.ui.view.LKScrollView;
 public abstract class LKScrollViewDelegateAdapter implements LKScrollViewDelegate {
 
     @Override
-    public void scrollViewDidScroll(LKScrollView scrollView) {
+    public void scrollViewDidScroll(LKUIScrollView scrollView) {
 
     }
 
     @Override
-    public void scrollViewWillBeginDragging(LKScrollView scrollView) {
+    public void scrollViewWillBeginDragging(LKUIScrollView scrollView) {
 
     }
 
     @Override
-    public void scrollViewWillEndDragging(LKScrollView scrollView, CGPoint velocity, CGPoint targetContentOffset) {
+    public void scrollViewWillEndDragging(LKUIScrollView scrollView, CGPoint velocity, CGPoint targetContentOffset) {
 
     }
 
     @Override
-    public void scrollViewDidEndDragging(LKScrollView scrollView, boolean decelerate) {
+    public void scrollViewDidEndDragging(LKUIScrollView scrollView, boolean decelerate) {
 
     }
 
     @Override
-    public void scrollViewWillBeginDecelerating(LKScrollView scrollView) {
+    public void scrollViewWillBeginDecelerating(LKUIScrollView scrollView) {
 
     }
 
     @Override
-    public void scrollViewDidEndDecelerating(LKScrollView scrollView) {
+    public void scrollViewDidEndDecelerating(LKUIScrollView scrollView) {
 
     }
 
     @Override
-    public void scrollViewDidEndScrollingAnimation(LKScrollView scrollView) {
+    public void scrollViewDidEndScrollingAnimation(LKUIScrollView scrollView) {
 
     }
 
